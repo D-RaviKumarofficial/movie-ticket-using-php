@@ -1,0 +1,41 @@
+Database name :sam
+
+CREATE TABLE users (
+  id INT(11) AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE movies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    image VARCHAR(255) NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    director VARCHAR(100) NOT NULL,
+    producer VARCHAR(100) NOT NULL,
+    music_director VARCHAR(100) NOT NULL,
+    hero VARCHAR(100) NOT NULL,
+    heroine VARCHAR(100) NOT NULL,
+    theatre VARCHAR(100) NOT NULL,
+    time TIME NOT NULL
+);
+
+
+CREATE TABLE upcoming_movies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    release_date DATE NOT NULL
+);
+
+CREATE TABLE bookings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    movie_id INT,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    phone VARCHAR(20),
+    booking_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (movie_id) REFERENCES movies(id)
+);
+
+
